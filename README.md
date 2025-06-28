@@ -1,11 +1,6 @@
 # System-Design-HLD
 This is a System Design Repo where you can get notes and use cases of HLD which will help you guys out, in preparing for system desing.
 
-
-# System Design - High Level Design (HLD)
-
-A curated collection of high-level design notes and concepts I'm learning as part of my System Design preparation for backend interviews.
-
 ---
 
 ## 📚 Topics Covered
