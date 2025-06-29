@@ -32,9 +32,6 @@ The Leaky Bucket algorithm came in to control the **flow of requests** — like 
 ## 🏗️ 3. Where to Place It in Architecture?
 
 Leaky Bucket should be placed **at the entry point** of your system — where requests first arrive.
-
-### 🔹 In Monolithic Architecture:
-
 ---
 
 ## 🧱 4. In Monolith vs Microservices
@@ -43,9 +40,54 @@ Leaky Bucket should be placed **at the entry point** of your system — where re
 - Add the leaky bucket logic as a middleware or servlet filter.
 - Handles requests before they reach the core application logic.
 
+            +-----------+
+            |   Client  |
+            +-----------+
+                  |
+                  v
+       +------------------------+
+       | Leaky Bucket Filter /  |
+       | Middleware (RateLimiter)|
+       +------------------------+
+                  |
+                  v
+       +------------------------+
+       |   Application Logic    |
+       +------------------------+
+                  |
+                  v
+           +-------------+
+           |   Database  |
+           +-------------+
+
+
 ### 🧩 Microservices:
 - Implement rate limiting at API Gateway or an **API Management layer**.
 - Can be applied per service or per endpoint for granular control.
+
+
+                          +-----------+
+                          |   Client  |
+                          +-----------+
+                                |
+                                v
+                   +--------------------------+
+                   |      API Gateway         |
+                   | (Leaky Bucket Algorithm) |
+                   +--------------------------+
+                                |
+               +----------------+----------------+
+               |                                 |
+               v                                 v
+      +--------------------+          +--------------------+
+      |   Service A        |          |   Service B        |
+      +--------------------+          +--------------------+
+               |                                 |
+               v                                 v
+      +--------------------+          +--------------------+
+      |   Database A       |          |   Database B       |
+      +--------------------+          +--------------------+
+
 
 ---
 
